@@ -6,6 +6,7 @@ import { useToast } from "../ui/use-toast";
 import PuzzleGame from "./PuzzleGame";
 import TeamDrawing from "./TeamDrawing";
 import EmotionMatch from "./EmotionMatch";
+import SafeChat from "../SafeChat";
 
 const MiniGamesHub = () => {
   const [selectedGame, setSelectedGame] = useState<string | null>(null);
@@ -61,7 +62,10 @@ const MiniGamesHub = () => {
         >
           ← Back to Games
         </button>
-        <GameComponent />
+        <div className="grid md:grid-cols-[2fr,1fr] gap-6">
+          <GameComponent />
+          <SafeChat />
+        </div>
       </div>
     );
   }
