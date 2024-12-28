@@ -3,10 +3,11 @@ import GameCard from "@/components/GameCard";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import ParentDashboard from "@/components/ParentDashboard";
 import Onboarding from "@/components/Onboarding";
+import MiniGamesHub from "@/components/games/MiniGamesHub";
 import { motion } from "framer-motion";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<"home" | "game" | "parent">("home");
+  const [currentView, setCurrentView] = useState<"home" | "game" | "parent" | "minigames">("home");
   const [showOnboarding, setShowOnboarding] = useState(true);
 
   useEffect(() => {
@@ -26,6 +27,8 @@ const Index = () => {
     }
 
     switch (currentView) {
+      case "minigames":
+        return <MiniGamesHub />;
       case "game":
         return (
           <div className="p-6">
@@ -64,6 +67,12 @@ const Index = () => {
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-6">
+              <GameCard
+                title="Mini Games"
+                description="Play fun games with friends!"
+                icon="/placeholder.svg"
+                onClick={() => setCurrentView("minigames")}
+              />
               <GameCard
                 title="Draw Together"
                 description="Create beautiful art with friends!"
