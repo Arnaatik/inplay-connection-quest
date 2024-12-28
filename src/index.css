@@ -38,7 +38,9 @@
   }
 }
 
-body {
-  @apply bg-background text-foreground;
-  font-family: 'Quicksand', sans-serif;
+@layer base {
+  body {
+    @apply bg-background text-[hsl(var(--foreground))];
+    font-family: 'Quicksand', sans-serif;
+  }
 }

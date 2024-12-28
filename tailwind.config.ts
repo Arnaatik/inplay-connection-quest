@@ -24,6 +24,7 @@ export default {
         accent: "#FFD66B",
         background: "#FFF9F0",
         "text-primary": "#4A4A4A",
+        foreground: "hsl(var(--foreground))",
       },
       borderRadius: {
         lg: "var(--radius)",
