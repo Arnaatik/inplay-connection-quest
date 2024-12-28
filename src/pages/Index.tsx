@@ -1,13 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GameCard from "@/components/GameCard";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import ParentDashboard from "@/components/ParentDashboard";
+import Onboarding from "@/components/Onboarding";
 import { motion } from "framer-motion";
 
 const Index = () => {
   const [currentView, setCurrentView] = useState<"home" | "game" | "parent">("home");
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+  useEffect(() => {
+    const onboardingComplete = localStorage.getItem("onboardingComplete");
+    if (onboardingComplete === "true") {
+      setShowOnboarding(false);
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+  };
 
   const renderContent = () => {
+    if (showOnboarding) {
+      return <Onboarding onComplete={handleOnboardingComplete} />;
+    }
+
     switch (currentView) {
       case "game":
         return (
